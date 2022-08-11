@@ -1,0 +1,33 @@
+body, html {
+    margin: 0;
+}
+
+.gameBoard {
+    background-color: blue;
+    width: 200px;
+    height:250px;
+}
+
+.piece {
+    /* display: inline-block; */
+    position:fixed;
+    border: 1px solid black;
+}
+
+.SmallPiece {
+    background-color: yellow;
+    /* width: 50px;
+    height: 50px; */
+}
+
+.LongPiece {
+    background-color: purple;
+    /* width: 100px;
+    height: 50px; */
+}
+
+.BigPiece {
+    background-color: red;
+    /* width: 100px;
+    height: 100px; */
+}
