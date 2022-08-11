@@ -11,7 +11,7 @@ class Board {
         }
         
         this.initPieceSquarePlacement(initPieces);
-        console.log(this.squares);
+        // console.log(this.squares);
     }
 
     initPieceSquarePlacement(initPieces) {
@@ -46,6 +46,18 @@ class Board {
 
     moveDown(pieceId) {
         const pieceLocation = this.pieceLocations[pieceId];
-
+        const newLocation = {"x": pieceLocation.x, "y": pieceLocation.y + 1, "w": w, "h": h} // Increase y by 1, to move 1 down
+        const newSquares = this.pieceLocationToSquareList(newLocation);
+        let available = true;
+        for (let i = 0; i < newSquares.length; i++) {
+            const s = newSquares[i];
+            if (this.squares[s] !== null && this.squares[s] !== pieceId) {
+                available = false;
+                break;
+            }
+        }
+        if (available) {
+            //
+        }
     }
 }
