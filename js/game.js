@@ -1,40 +1,37 @@
-const initPieces = [
-    {"type": "BigPiece", "x": 0, "y": 1, "width": 2, "height": 2},
-    {"type": "LongPiece", "x": 2, "y": 0, "width": 2, "height": 1},
-    {"type": "LongPiece", "x": 2, "y": 1, "width": 1, "height": 2},
-    {"type": "LongPiece", "x": 3, "y": 1, "width": 1, "height": 2},
-    {"type": "LongPiece", "x": 0, "y": 3, "width": 1, "height": 2},
-    {"type": "LongPiece", "x": 3, "y": 3, "width": 1, "height": 2},
-    {"type": "SmallPiece", "x": 1, "y": 3, "width": 1, "height": 1},
-    {"type": "SmallPiece", "x": 2, "y": 3, "width": 1, "height": 1},
-    {"type": "SmallPiece", "x": 1, "y": 4, "width": 1, "height": 1},
-    {"type": "SmallPiece", "x": 2, "y": 4, "width": 1, "height": 1},
-]
-
 class Game {
-    constructor() {
+    constructor(initPieces = predefInitPieces) {
         this.name = "BoardGame";
         this.pieces = [];
         this.margin = 30;
         this.gameBoardDiv = document.getElementById("gameBoard");
         this.gameBoardDiv.style = "margin: " + this.margin + "px;";
 
-        this.createBoard();
+        this.selectedPiece = null;
+
+        this.board = new Board(predefBoardWidth, predefBoardHeight, predefInitPieces);
+
+        this.createPieces(initPieces);
     }
 
-    createBoard() {
+    createPieces(initPieces) {
         for (let i = 0; i < initPieces.length; i++) {
             let p = initPieces[i];
-            this.pieces[i] = new Piece(this.gameBoardDiv, i, this.margin, p.type, p.x, p.y, p.width, p.height);
+            this.pieces[i] = new Piece(this, this.gameBoardDiv, this.board, i, this.margin, p.type, p.x, p.y, p.width, p.height);
         }
     }
-
-    test(pieceId) {
+    
+    pieceClicked(pieceId) {
         console.log(pieceId);
-        this.setColor(pieceId);
+        game.selectPiece(pieceId);
     }
 
-    setColor(pieceId) {
-        document.getElementById('p'+pieceId).style.borderColor = "White";
+    selectPiece(pieceId) {
+        this.selectedPiece = this.pieces[pieceId];
+        this.selectedPiece.pieceSelected();
+        // this.setColor(pieceId);
     }
+
+    // setColor(pieceId) {
+    //     document.getElementById('p'+pieceId).style.borderColor = "Green";
+    // }
 }
