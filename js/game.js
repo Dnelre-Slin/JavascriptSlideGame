@@ -26,16 +26,6 @@ class Game {
         for (let i = 0; i < initPieces.length; i++) {
             let p = initPieces[i];
             this.pieces[i] = new Piece(this.gameBoardDiv, i, this.margin, p.type, p.x, p.y, p.width, p.height);
-            // this.pieces[i] = document.createElement("div");
-            // this.pieces[i].id = "p" + i;
-            // this.pieces[i].className = "piece p" + i;
-            // this.pieces[i].onclick = "pieceClicked(" + i + ")";
-            // let y = Math.floor(i/4);
-            // let x = i%4;
-            // console.log(y);
-            // console.log(x);
-            // this.pieces[i].style = "left: " + (x*50) + "px; top: " + (y*50) + "px;"
-            // this.gameBoardDiv.appendChild(this.pieces[i]);
         }
     }
 

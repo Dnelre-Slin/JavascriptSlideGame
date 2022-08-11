@@ -14,10 +14,7 @@ class Piece {
         this.pieceDiv = document.createElement("div");
         this.pieceDiv.id = "p" + this.i;
         this.pieceDiv.className = this.type + " piece p" + this.i;
-        // this.pieceDiv.onclick = "pieceClicked(" + i + ")";
         this.pieceDiv.onclick = () => pieceClicked(this.i);
-        // let y = Math.floor(i/boardWidth);
-        // let x = i%boardWidth;
         this.pieceDiv.style.cssText += "width: " + (this.width * this.pieceSize - 2) + "px; "; 
         this.pieceDiv.style.cssText += "height: " + (this.height * this.pieceSize - 2) + "px;";
         console.log(this.pieceDiv.style.toString());
