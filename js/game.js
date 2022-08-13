@@ -26,6 +26,9 @@ class Game {
     }
 
     selectPiece(pieceId) {
+        if (this.selectedPiece !== null) {
+            this.selectedPiece.pieceUnselected();
+        }
         this.selectedPiece = this.pieces[pieceId];
         this.selectedPiece.pieceSelected();
         // this.setColor(pieceId);

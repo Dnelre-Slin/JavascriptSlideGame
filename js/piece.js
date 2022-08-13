@@ -33,6 +33,21 @@ class Piece {
         this.pieceDiv.style.cssText += "top: " + (pieceLocation.y * this.pieceSize + this.margin) + "px;";
     }
 
+    updateBorderColors(availableDirections = null) {
+        // Set to black if no availableDirections are sent in
+        if (availableDirections === null) {
+            this.pieceDiv.style["border-color"] = "Black";
+        } else {
+            for (const [key, value] of Object.entries(availableDirections)) {
+                // const s = "border-" + key + "-color: " + (value?"Green":"Red") + ";";
+                const s = "border-" + key + "-color"
+                const v = (value?"Green":"Red");
+                console.log(s);
+                this.pieceDiv.style[s] = v;
+            }
+        }
+    }
+
     pieceSelected() {
         // directions = {
         //     "top": {"x": 0, "y": -1},
@@ -52,15 +67,21 @@ class Piece {
         const availableDirections = this.board.checkPieceNeighbors(this.i);
         console.log(availableDirections);
 
-        for (const [key, value] of Object.entries(availableDirections)) {
-            // const s = "border-" + key + "-color: " + (value?"Green":"Red") + ";";
-            const s = "border-" + key + "-color"
-            const v = (value?"Green":"Red");
-            console.log(s);
-            this.pieceDiv.style[s] = v;
-        }
+        this.updateBorderColors(availableDirections);
+
+        // for (const [key, value] of Object.entries(availableDirections)) {
+        //     // const s = "border-" + key + "-color: " + (value?"Green":"Red") + ";";
+        //     const s = "border-" + key + "-color"
+        //     const v = (value?"Green":"Red");
+        //     console.log(s);
+        //     this.pieceDiv.style[s] = v;
+        // }
 
         // this.board.moveDown(this.i);
         // this.updateDivPos();
+    }
+
+    pieceUnselected() {
+        this.updateBorderColors(null);
     }
 }
