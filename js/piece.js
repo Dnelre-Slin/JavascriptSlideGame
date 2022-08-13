@@ -2,11 +2,12 @@ class Piece {
     constructor(game, gameBoardDiv, board, i, margin, type, x, y, width, height, borderWidth = 4, pieceSize = 50) {
         this.game = game;
         this.gameBoardDiv = gameBoardDiv;
+        this.board = board;
         this.i = i;
         this.margin = margin;
         this.type = type;
-        this.x = x;
-        this.y = y;
+        // this.x = x;
+        // this.y = y;
         this.width = width;
         this.height = height;
         this.borderWidth = borderWidth;
@@ -27,8 +28,9 @@ class Piece {
     }
 
     updateDivPos() {
-        this.pieceDiv.style.cssText += "left: " + (this.x * this.pieceSize + this.margin) + "px;"; 
-        this.pieceDiv.style.cssText += "top: " + (this.y * this.pieceSize + this.margin) + "px;";
+        const pieceLocation = this.board.getPieceLocation(this.i);
+        this.pieceDiv.style.cssText += "left: " + (pieceLocation.x * this.pieceSize + this.margin) + "px;"; 
+        this.pieceDiv.style.cssText += "top: " + (pieceLocation.y * this.pieceSize + this.margin) + "px;";
     }
 
     pieceSelected() {
@@ -46,6 +48,19 @@ class Piece {
         //         }
         //     }
         // }
-        this.pieceDiv.style.borderColor = "Green";
+        // this.pieceDiv.style.borderColor = "Green";
+        const availableDirections = this.board.checkPieceNeighbors(this.i);
+        console.log(availableDirections);
+
+        for (const [key, value] of Object.entries(availableDirections)) {
+            // const s = "border-" + key + "-color: " + (value?"Green":"Red") + ";";
+            const s = "border-" + key + "-color"
+            const v = (value?"Green":"Red");
+            console.log(s);
+            this.pieceDiv.style[s] = v;
+        }
+
+        // this.board.moveDown(this.i);
+        // this.updateDivPos();
     }
 }
