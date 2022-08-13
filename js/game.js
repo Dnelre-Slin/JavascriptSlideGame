@@ -33,8 +33,36 @@ class Game {
         this.selectedPiece.pieceSelected();
         // this.setColor(pieceId);
     }
-
+    
     // setColor(pieceId) {
-    //     document.getElementById('p'+pieceId).style.borderColor = "Green";
-    // }
+        //     document.getElementById('p'+pieceId).style.borderColor = "Green";
+        // }
+        
+        moveDown() {
+            if (this.selectedPiece !== null) {
+                this.board.moveDown(this.selectedPiece.i);
+                this.selectedPiece.updateDivPos();
+                this.selectedPiece.pieceSelected();
+            }
+        }
+        
+        moveUp() {
+            if (this.selectedPiece !== null) {
+                this.board.moveUp(this.selectedPiece.i);
+                this.selectedPiece.updateDivPos();
+                this.selectedPiece.pieceSelected();
+        }
+    }
+
+    moveLeft() {
+        if (this.selectedPiece !== null) {
+            // this.board.moveLeft(this.selectedPiece.i);
+        }
+    }
+
+    moveRight() {
+        if (this.selectedPiece !== null) {
+            // this.board.moveRight(this.selectedPiece.i);
+        }
+    }
 }

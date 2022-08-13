@@ -95,18 +95,21 @@ class Board {
         return availableDirections;
     }
 
+    moveUp(pieceId) {
+        const pieceLocation = this.pieceLocations[pieceId];
+        const newLocation = {"x": pieceLocation.x, "y": pieceLocation.y - 1, "w": pieceLocation.w, "h": pieceLocation.h} // Increase y by 1, to move 1 down
+        const available = this.checkLocationAvailability(pieceId, newLocation);
+        if (available) {
+            console.log("Move up");
+            this.setPiecePlacement(pieceId, newLocation);
+        }
+    }
+
     moveDown(pieceId) {
         const pieceLocation = this.pieceLocations[pieceId];
         const newLocation = {"x": pieceLocation.x, "y": pieceLocation.y + 1, "w": pieceLocation.w, "h": pieceLocation.h} // Increase y by 1, to move 1 down
         const available = this.checkLocationAvailability(pieceId, newLocation);
-        // const newSquares = this.pieceLocationToSquareList(newLocation);
-        // for (let i = 0; i < newSquares.length; i++) {
-        //     const s = newSquares[i];
-        //     if (this.squares[s] !== null && this.squares[s] !== pieceId) {
-        //         available = false;
-        //         break;
-        //     }
-        // }
+
         if (available) {
             this.setPiecePlacement(pieceId, newLocation);
         }

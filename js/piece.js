@@ -49,36 +49,10 @@ class Piece {
     }
 
     pieceSelected() {
-        // directions = {
-        //     "top": {"x": 0, "y": -1},
-        //     "bottom": {"x": 0, "y": 1},
-        //     "left": {"x": -1, "y": 0},
-        //     "right": {"x": 1, "y": 0}
-        // }
-        // for (const [key, value] of Object.entries(directions)) {
-        //     for (let w = 0; w < this.width; w++)
-        //     {
-        //         for (let h = 0; h < this.height; h++) {
-        //             const pos = [value.x + w, value.y + h];
-        //         }
-        //     }
-        // }
-        // this.pieceDiv.style.borderColor = "Green";
         const availableDirections = this.board.checkPieceNeighbors(this.i);
         console.log(availableDirections);
 
         this.updateBorderColors(availableDirections);
-
-        // for (const [key, value] of Object.entries(availableDirections)) {
-        //     // const s = "border-" + key + "-color: " + (value?"Green":"Red") + ";";
-        //     const s = "border-" + key + "-color"
-        //     const v = (value?"Green":"Red");
-        //     console.log(s);
-        //     this.pieceDiv.style[s] = v;
-        // }
-
-        // this.board.moveDown(this.i);
-        // this.updateDivPos();
     }
 
     pieceUnselected() {

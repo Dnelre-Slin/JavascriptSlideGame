@@ -11,6 +11,7 @@ body, html {
 .piece {
     position:fixed;
     border: 2px solid black;
+    transition: top 0.25s;
 }
 
 .SmallPiece {
