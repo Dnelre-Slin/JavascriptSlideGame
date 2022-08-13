@@ -22,6 +22,7 @@ class Piece {
         this.pieceDiv.id = "p" + this.i;
         this.pieceDiv.className = this.type + " piece p" + this.i;
         this.pieceDiv.onclick = () => this.game.pieceClicked(this.i);
+        this.pieceDiv.onmousedown = () => this.game.pieceMouseDown(this.i);
         this.pieceDiv.style.cssText += "width: " + (this.width * this.pieceSize - this.borderWidth) + "px; "; 
         this.pieceDiv.style.cssText += "height: " + (this.height * this.pieceSize - this.borderWidth) + "px;";
         this.gameBoardDiv.appendChild(this.pieceDiv);

@@ -19,3 +19,12 @@ window.addEventListener('keyup', function(event) {
       game.moveRight();
     }
   });
+
+window.addEventListener('mouseup', function(event) {
+    console.log("mouseup " + event.button);
+});
+
+window.addEventListener('mousemove', function(event) {
+    console.log("mousemove " + event.clientX + " " + event.clientY + " " + event.movementX + " " + event.movementY);
+    // console.log(event);
+});

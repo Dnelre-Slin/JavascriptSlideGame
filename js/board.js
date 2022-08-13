@@ -114,4 +114,24 @@ class Board {
             this.setPiecePlacement(pieceId, newLocation);
         }
     }
+
+    moveLeft(pieceId) {
+        const pieceLocation = this.pieceLocations[pieceId];
+        const newLocation = {"x": pieceLocation.x - 1, "y": pieceLocation.y, "w": pieceLocation.w, "h": pieceLocation.h} // Increase y by 1, to move 1 down
+        const available = this.checkLocationAvailability(pieceId, newLocation);
+
+        if (available) {
+            this.setPiecePlacement(pieceId, newLocation);
+        }
+    }
+
+    moveRight(pieceId) {
+        const pieceLocation = this.pieceLocations[pieceId];
+        const newLocation = {"x": pieceLocation.x + 1, "y": pieceLocation.y, "w": pieceLocation.w, "h": pieceLocation.h} // Increase y by 1, to move 1 down
+        const available = this.checkLocationAvailability(pieceId, newLocation);
+
+        if (available) {
+            this.setPiecePlacement(pieceId, newLocation);
+        }
+    }
 }

@@ -25,6 +25,10 @@ class Game {
         game.selectPiece(pieceId);
     }
 
+    pieceMouseDown(pieceId) {
+        console.log("mousedown " + pieceId);
+    }
+
     selectPiece(pieceId) {
         if (this.selectedPiece !== null) {
             this.selectedPiece.pieceUnselected();
@@ -38,31 +42,35 @@ class Game {
         //     document.getElementById('p'+pieceId).style.borderColor = "Green";
         // }
         
-        moveDown() {
-            if (this.selectedPiece !== null) {
-                this.board.moveDown(this.selectedPiece.i);
-                this.selectedPiece.updateDivPos();
-                this.selectedPiece.pieceSelected();
-            }
-        }
-        
-        moveUp() {
-            if (this.selectedPiece !== null) {
-                this.board.moveUp(this.selectedPiece.i);
-                this.selectedPiece.updateDivPos();
-                this.selectedPiece.pieceSelected();
+    moveDown() {
+        if (this.selectedPiece !== null) {
+            this.board.moveDown(this.selectedPiece.i);
+            this.selectedPiece.updateDivPos();
+            this.selectedPiece.pieceSelected();
         }
     }
-
+        
+    moveUp() {
+        if (this.selectedPiece !== null) {
+            this.board.moveUp(this.selectedPiece.i);
+            this.selectedPiece.updateDivPos();
+            this.selectedPiece.pieceSelected();
+        }
+    }
+    
     moveLeft() {
         if (this.selectedPiece !== null) {
-            // this.board.moveLeft(this.selectedPiece.i);
+            this.board.moveLeft(this.selectedPiece.i);
+            this.selectedPiece.updateDivPos();
+            this.selectedPiece.pieceSelected();
         }
     }
-
+    
     moveRight() {
         if (this.selectedPiece !== null) {
-            // this.board.moveRight(this.selectedPiece.i);
+            this.board.moveRight(this.selectedPiece.i);
+            this.selectedPiece.updateDivPos();
+            this.selectedPiece.pieceSelected();
         }
     }
 }
